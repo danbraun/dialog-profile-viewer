@@ -1,8 +1,15 @@
 html, body {
-    background: black;
+    background: darkslategray;
     font-family:Arial, Helvetica, sans-serif
 }
-body {
+body:has(dialog[open]) {
+    overflow: hidden;
+  }
+img {
+    display: block;
+    width: 100%;
+}
+body p {
     color: lightblue;
 }
 h1 {
@@ -10,4 +17,73 @@ h1 {
 }
 main {
     position: relative;
+    // padding-left: calc(100vw - 100%);
+}
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1400px;
+    justify-content: center;
+}
+.card {
+    .card-content {
+        background: black;
+        max-width: 400px;
+        .card-lower {
+            
+            p {
+    
+                padding: 0 1rem;
+            }
+        }
+    }
+    .card-image {
+        max-width: 400px;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+}
+.content-page-lower {
+    max-width: 800px;
+    margin-inline: auto;
+    p {
+        font-size: 2rem;
+    }
+}
+dialog {
+    overflow: auto;
+    overscroll-behavior: contain;
+    width: 100%;
+    position: relative;
+    background: transparent;
+    border: none;
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+    }
+    .prev {
+        left: 0;
+        translate: 50%
+    }
+    .next {
+        right: 0;
+        translate: -50%
+    }
+    .card .card-content {
+        max-width: 600px;
+        margin-inline: auto;
+        .card-image {
+
+            max-width: 600px;
+        }
+    }
+    .card .card-content .card-image {
+    }
+    .card[aria-hidden=true] {
+        display: none;
+    }
+    &::backdrop {
+        background-color: rgba(black, 0.8);
+      }
 }

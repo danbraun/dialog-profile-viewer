@@ -1,0 +1,90 @@
+html, body {
+  background: darkslategray;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+body p {
+  color: lightblue;
+}
+
+h1 {
+  text-align: center;
+}
+
+main {
+  position: relative;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1400px;
+  justify-content: center;
+}
+
+.card .card-content {
+  background: black;
+  max-width: 400px;
+}
+.card .card-content .card-lower p {
+  padding: 0 1rem;
+}
+.card .card-image {
+  max-width: 400px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.content-page-lower {
+  max-width: 800px;
+  margin-inline: auto;
+}
+.content-page-lower p {
+  font-size: 2rem;
+}
+
+dialog {
+  overflow: auto;
+  overscroll-behavior: contain;
+  width: 100%;
+  position: relative;
+  background: transparent;
+  border: none;
+}
+dialog .prev, dialog .next {
+  position: absolute;
+  top: 50%;
+}
+dialog .prev {
+  left: 0;
+  translate: 50%;
+}
+dialog .next {
+  right: 0;
+  translate: -50%;
+}
+dialog .card .card-content {
+  max-width: 600px;
+  margin-inline: auto;
+}
+dialog .card .card-content .card-image {
+  max-width: 600px;
+}
+dialog .card[aria-hidden=true] {
+  display: none;
+}
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/*# sourceMappingURL=style.css.map */

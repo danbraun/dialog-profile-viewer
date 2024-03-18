@@ -5,27 +5,44 @@ layout: base.njk
 <main>
     <h1>{{ title }}</h1>
 
-    {% for i in range (1, 3) -%}
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit culpa veritatis laborum, vel provident facilis rem error eos repellendus ipsam suscipit cum dolor in quas.</p>
-    {% endfor %}
+    <div class="cards">
 
-    <div class="photo photo-1" aria-hidden=true data-photo="1">
+        {% for i in range (1, 7) -%}
+            <div class="card card-{{i}}" data-card="{{i}}">
+                <div class="card-content">
 
-        <div id="words-to-reveal">
-            <p>Lorem ipsum, dolor sit amet consectetur.</p>
-        </div>
-        <img width="600" height="300" src="https://picsum.photos/600/300" alt="">
-    </div>
-    {% for i in range (1, 3) -%}
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit culpa veritatis laborum, vel provident facilis rem error eos repellendus ipsam suscipit cum dolor in quas.</p>
-    {% endfor %}
-    <div id="ssb1" class="sticky-status-box">1</div>
-
-    <div class="root-bounds">
-        0
+                    <img class="card-image" width="400" src="https://picsum.photos/600/300?{{i}}" alt="">
+                    <div class="card-lower">
+                        <p>Lorem ipsum, dolor sit amet consectetur.</p>
+                        <button data-open="{{i}}" class="showModal">Open Detail</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 
-    <div class="rootTop"></div>
-    <div class="rootBottom"></div>
+    <div class="content-page-lower">
 
+        {% for i in range (1, 6) -%}
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit culpa veritatis laborum, vel provident facilis rem error eos repellendus ipsam suscipit cum dolor in quas.</p>
+        {% endfor %}
+    </div>
+
+    <dialog>
+        <button class="prev">Prev</button>
+        <button class="next">Next</button>
+        {% for i in range (1, 7) -%}
+            <div class="card card-{{i}}" data-card="{{i}}" aria-hidden="true">
+                <div class="card-content">
+
+                    <img class="card-image" width="400" src="https://picsum.photos/600/300?{{i}}" alt="">
+                    <div class="card-lower">
+                        {% for i in range (1, 9) -%}
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit culpa veritatis laborum, vel provident facilis rem error eos repellendus ipsam suscipit cum dolor in quas.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </dialog>
 </main>
