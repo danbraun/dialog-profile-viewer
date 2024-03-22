@@ -27,13 +27,13 @@ main {
     justify-content: center;
 }
 .card {
+    overflow: hidden;
     .card-content {
         background: black;
         max-width: 400px;
         .card-lower {
             
             p {
-    
                 padding: 0 1rem;
             }
         }
@@ -52,6 +52,7 @@ main {
     }
 }
 dialog {
+    z-index: 2;
     overflow: auto;
     overscroll-behavior: contain;
     width: 100%;
@@ -71,6 +72,9 @@ dialog {
         translate: -50%
     }
     .card .card-content {
+        transform: translateY(50px);
+        opacity: 0;
+        transition: all 500ms;
         max-width: 600px;
         margin-inline: auto;
         .card-image {
@@ -78,12 +82,23 @@ dialog {
             max-width: 600px;
         }
     }
-    .card .card-content .card-image {
+    .card .card-content .card-lower p {
+        font-size: 1.4rem;
+        margin: 0;
+        padding: 3rem 2rem;
     }
-    .card[aria-hidden=true] {
-        display: none;
+}
+dialog.show {
+    
+    z-index: 1;
+    .card-content {
+        opacity: 1;
+        transform: translateY(0);
     }
-    &::backdrop {
-        background-color: rgba(black, 0.8);
-      }
+}
+dialog.show::backdrop {
+    background-color: rgba(black, 0.8);
+}
+dialog::backdrop {
+    background-color: rgba(black, 0.0);
 }

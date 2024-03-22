@@ -7,17 +7,34 @@ layout: base.njk
 
     <div class="cards">
 
-        {% for i in range (1, 7) -%}
-            <div class="card card-{{i}}" data-card="{{i}}">
+        {% for data in dialogData -%}
+            <div class="card card-{{loop.index}}" data-card="{{loop.index}}">
                 <div class="card-content">
 
-                    <img class="card-image" width="400" src="https://picsum.photos/600/300?{{i}}" alt="">
+                    <img class="card-image" width="400" src="https://picsum.photos/600/300?{{loop.index}}" alt="">
                     <div class="card-lower">
-                        <p>Lorem ipsum, dolor sit amet consectetur.</p>
-                        <button data-open="{{i}}" class="showModal">Open Detail</button>
+                        <p>{{data.dialog}}</p>
+                        <button data-open="{{loop.index}}" class="showModal">Open Detail</button>
                     </div>
                 </div>
             </div>
+            <dialog id="dialogID-{{loop.index}}">
+                <button class="prev">Prev</button>
+                <button class="next">Next</button>
+
+                <div class="card card-{{loop.index}}" data-card="{{loop.index}}">
+                    <div class="card-content">
+
+                        <img src="https://picsum.photos/600/300?{{loop.index}}" alt="">
+                        <div class="card-lower">
+
+                            <p>{{data.dialog}}</p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </dialog>
         {% endfor %}
     </div>
 
@@ -28,21 +45,4 @@ layout: base.njk
         {% endfor %}
     </div>
 
-    <dialog>
-        <button class="prev">Prev</button>
-        <button class="next">Next</button>
-        {% for i in range (1, 7) -%}
-            <div class="card card-{{i}}" data-card="{{i}}" aria-hidden="true">
-                <div class="card-content">
-
-                    <img class="card-image" width="400" src="https://picsum.photos/600/300?{{i}}" alt="">
-                    <div class="card-lower">
-                        {% for i in range (1, 9) -%}
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit culpa veritatis laborum, vel provident facilis rem error eos repellendus ipsam suscipit cum dolor in quas.</p>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </dialog>
 </main>
